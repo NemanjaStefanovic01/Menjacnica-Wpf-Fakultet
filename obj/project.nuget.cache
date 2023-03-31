@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "Nj3Zk0fF6KIPRr6wmBYif766DfzUC1IIp7CO/0NGI9Qt7oaXJ1jdGb9blcVBPdYak3f+p2v1sKxq5IovNZ45Ew==",
+  "dgSpecHash": "xaz92XdqMFKcNf5gODEso3NfzQC21teJCUhekUskLT2k0N+k8kpVRZ722rtnoYEoPAnICYQqnUTBvvVxsRNGZw==",
   "success": true,
   "projectFilePath": "D:\\Svastara\\Educons\\Treca godina\\Drugi Semestar\\Projektovanje Softvera\\MenjacnicaProjekat\\MenjacnicaProjekat.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\neman\\.nuget\\packages\\materialdesigncolors\\2.1.2\\materialdesigncolors.2.1.2.nupkg.sha512",
+    "C:\\Users\\neman\\.nuget\\packages\\materialdesignthemes\\4.8.0\\materialdesignthemes.4.8.0.nupkg.sha512",
+    "C:\\Users\\neman\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.39\\microsoft.xaml.behaviors.wpf.1.1.39.nupkg.sha512"
+  ],
   "logs": []
 }
