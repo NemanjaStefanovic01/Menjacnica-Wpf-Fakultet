@@ -15,6 +15,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Color = System.Windows.Media.Color;
 using ColorConverter = System.Windows.Media.ColorConverter;
+using Google.Cloud.Firestore;
+using MenjacnicaProjekat.Models;
 
 namespace MenjacnicaProjekat.View
 {
@@ -23,6 +25,10 @@ namespace MenjacnicaProjekat.View
     /// </summary>
     public partial class LogInWin : Window
     {
+        //Database connection and user models
+        public UserService userService = new UserService();
+        public FirestoreDb db;
+
         public List<String> users = new List<String>();
         public string selectedUser;
 
@@ -32,6 +38,9 @@ namespace MenjacnicaProjekat.View
         public LogInWin()
         {
             InitializeComponent();
+
+            //Povezi se na bazu
+            db = userService.GetConnection();
 
             //Popunjavanje liste korisnika
             users.Add("Nemanja");
@@ -67,6 +76,31 @@ namespace MenjacnicaProjekat.View
         private void BtnMinimize(object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
+        }
+
+        //Login functionality
+        private void Btn_Login(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine("Pritisnuto login dugme");
+
+            DateTime now = DateTime.Now;
+            string date = now.ToString("dd/MM/yyyy");
+            string time = now.ToString("HH:mm");
+            string dateCreated = date + " " + time;
+
+            UserModel user = new UserModel();
+
+            user.Ime = "Jovana";
+            user.Prezime = "Milovanovic";
+            user.UserName = "JovanaM";
+            user.Password = "jovana123";
+            user.Funkcija = "User";
+            user.BrTelefona = "062/9502345";
+            user.DateCreated = dateCreated;
+            user.Status = "Active";
+
+            Debug.WriteLine("user" + user.UserName);
+            userService.AddUserWithAutoId(db, user);
         }
 
 
@@ -124,6 +158,7 @@ namespace MenjacnicaProjekat.View
             return border;
         }
 
+        
         private void Btn_ZaboravljenaLozinka(object sender, RoutedEventArgs e)
         {
             //Napravi custom prozor koji se otvori umesto ogavnog message boxa

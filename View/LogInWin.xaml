@@ -219,7 +219,7 @@
                                 Height="65" Width="220" Background="teal"
                                 Content="PRIJAVI SE" Foreground="WhiteSmoke"
                                 FontSize="25" FontWeight="Bold"
-                                Margin="0,0,0,70"/>
+                                Margin="0,0,0,70" Click="Btn_Login"/>
                         <Button VerticalAlignment="Bottom" HorizontalAlignment="Center"
                                 Width="300px" Foreground="Teal" Background="Transparent"
                                 BorderBrush="Transparent" Content="Zaboravili ste lozinku?"
