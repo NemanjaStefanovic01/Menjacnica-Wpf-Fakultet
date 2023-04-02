@@ -1,0 +1,233 @@
+﻿<Window x:Class="MenjacnicaProjekat.View.LogInWin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MenjacnicaProjekat.View"
+        mc:Ignorable="d"
+        Height="1080" Width="1920"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
+        WindowStyle="None"
+        
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}">
+    <Grid Background="WhiteSmoke">
+        <!--Window control-->
+        <StackPanel Orientation="Horizontal"
+                    VerticalAlignment="Top" HorizontalAlignment="Right"
+                    Margin="5">
+            <Button Height="35" Width="35"
+                    Background="Transparent" BorderBrush="Transparent"
+                    Padding="0"
+                    Click="BtnMinimize"
+                    Margin="5">
+                <materialDesign:PackIcon Kind="Minus" 
+                                         VerticalAlignment="Center" HorizontalAlignment="Center"
+                                         Foreground="Teal"
+                                         Height="35" Width="35"/>
+            </Button>
+            <Button Height="35" Width="35"
+                    Background="Transparent" BorderBrush="Transparent"
+                    Padding="0"
+                    Click="BtnClose"
+                    Margin="5">
+                <materialDesign:PackIcon Kind="Close" 
+                                         VerticalAlignment="Center" HorizontalAlignment="Center"
+                                         Foreground="Teal"
+                                         Height="35" Width="35"/>
+            </Button>
+        </StackPanel>
+        
+        <!--Main Login Card-->
+        <Border Background="Teal" CornerRadius="20,20,20,20"
+                Height="950" Width="850">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="50"
+                                  Color="#e0e0e0"
+                                  Direction="0" />
+            </Border.Effect>
+            
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition Height="350"/>
+                </Grid.RowDefinitions>
+                
+                <!--User select-->
+                <Grid Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    
+                    <!--Prvi red usera-->
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border Grid.Column="0" 
+                                Background="WhiteSmoke" CornerRadius="15,15,15,15"
+                                Height="220" Width="200" BorderThickness="0">
+                            <Button x:Name="btn0"
+                                    Height="220" Width="200" BorderThickness="0"
+                                    Background="Transparent" Padding="0"
+                                    Click="Btn_UserSelected">
+                                <Grid>
+                                    <TextBlock x:Name="userSelectLabel_firstUser" Text="Administrator"
+                                               Height="220"
+                                               VerticalAlignment="Top" HorizontalAlignment="Center"
+                                               FontSize="25" FontWeight="SemiBold" 
+                                               Foreground="Teal"
+                                               Margin="0,30"/>
+                                    <materialDesign:PackIcon Kind="Account" Foreground="Teal"
+                                                         VerticalAlignment="Bottom" HorizontalAlignment="Center"
+                                                         Height="200" Width="200"
+                                                         Margin="0,0,0,-34"/>
+                                </Grid>
+                            </Button>
+                        </Border>
+                        <Border Grid.Column="1" 
+                                Background="WhiteSmoke" CornerRadius="15,15,15,15"
+                                Height="220" Width="200" BorderThickness="0">
+                            <Button x:Name="btn1"
+                                    Height="220" Width="200" BorderThickness="0"
+                                    Background="Transparent" Padding="0"
+                                    Click="Btn_UserSelected">
+                                <Grid>
+                                    <TextBlock x:Name="userSelectLabel_secondUser" Text="Menjac01"
+                                               Height="220"
+                                               VerticalAlignment="Top" HorizontalAlignment="Center"
+                                               FontSize="25" FontWeight="SemiBold" 
+                                               Foreground="Teal"
+                                               Margin="0,30"/>
+                                    <materialDesign:PackIcon Kind="Account" Foreground="Teal"
+                                                         VerticalAlignment="Bottom" HorizontalAlignment="Center"
+                                                         Height="200" Width="200"
+                                                         Margin="0,0,0,-34"/>
+                                </Grid>
+                            </Button>
+                        </Border>
+                        <Border Grid.Column="2" 
+                                Background="WhiteSmoke" CornerRadius="15,15,15,15"
+                                Height="220" Width="200" BorderThickness="0">
+                            <Button x:Name="btn2"
+                                    Height="220" Width="200" BorderThickness="0"
+                                    Background="Transparent" Padding="0"
+                                    Click="Btn_UserSelected">
+                                <Grid>
+                                    <TextBlock x:Name="userSelectLabel_thirdUser" Text="Menjac02"
+                                               Height="220"
+                                               VerticalAlignment="Top" HorizontalAlignment="Center"
+                                               FontSize="25" FontWeight="SemiBold" 
+                                               Foreground="Teal"
+                                               Margin="0,30"/>
+                                    <materialDesign:PackIcon Kind="Account" Foreground="Teal"
+                                                         VerticalAlignment="Bottom" HorizontalAlignment="Center"
+                                                         Height="200" Width="200"
+                                                         Margin="0,0,0,-34"/>
+                                </Grid>
+                            </Button>
+                        </Border>
+                    </Grid>
+                    
+                    <!--Drugi red usera-->
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border Grid.Column="0" 
+                                Background="WhiteSmoke" CornerRadius="15,15,15,15"
+                                Height="220" Width="200" BorderThickness="0">
+                            <Button x:Name="btn3"
+                                    Height="220" Width="200" BorderThickness="0"
+                                    Background="Transparent" Padding="0"
+                                    Click="Btn_UserSelected">
+                                <Grid>
+                                    <TextBlock x:Name="userSelectLabel_fourthUser" Text="Menjac03"
+                                               Height="220"
+                                               VerticalAlignment="Top" HorizontalAlignment="Center"
+                                               FontSize="25" FontWeight="SemiBold" 
+                                               Foreground="Teal"
+                                               Margin="0,30"/>
+                                    <materialDesign:PackIcon Kind="Account" Foreground="Teal"
+                                                         VerticalAlignment="Bottom" HorizontalAlignment="Center"
+                                                         Height="200" Width="200"
+                                                         Margin="0,0,0,-34"/>
+                                </Grid>
+                            </Button>
+                        </Border>
+                        <Border Grid.Column="1" 
+                                Background="WhiteSmoke" CornerRadius="15,15,15,15"
+                                Height="220" Width="200" BorderThickness="0">
+                            <Button x:Uid="4"
+                                    Height="220" Width="200" BorderThickness="0"
+                                    Background="Transparent" Padding="0">
+                                <Grid>
+                                    <TextBlock Text="NOVI"
+                                               Height="220"
+                                               VerticalAlignment="Top" HorizontalAlignment="Center"
+                                               FontSize="21" FontWeight="SemiBold" 
+                                               Foreground="Teal"
+                                               Margin="0,30"/>
+                                    <TextBlock Text="ADMINISTRAOTR"
+                                               Height="220"
+                                               VerticalAlignment="Top" HorizontalAlignment="Center"
+                                               FontSize="21" FontWeight="SemiBold" 
+                                               Foreground="Teal"
+                                               Margin="0,55"/>
+                                    <materialDesign:PackIcon Kind="AccountPlus" Foreground="Teal"
+                                                         VerticalAlignment="Bottom" HorizontalAlignment="Center"
+                                                         Height="150" Width="150"
+                                                         Margin="0,0,0,-34"/>
+                                </Grid>
+                            </Button>
+                        </Border>
+                    </Grid>
+                </Grid>
+                
+                <!--Login-->
+                <Border Grid.Row="1" Height="350"
+                        Background="WhiteSmoke" CornerRadius="0,0,18,18">
+                    <Grid>
+                        <TextBlock x:Name="login_userLabel" Text="MENJAC01"
+                               FontSize="40" FontWeight="SemiBold"
+                               VerticalAlignment="Top" HorizontalAlignment="Center"
+                               Margin="0,30" Foreground="Teal"/>
+                        <PasswordBox Style="{StaticResource MaterialDesignOutlinedPasswordBox}"
+                                     materialDesign:HintAssist.Hint="Password" 
+                                     VerticalAlignment="Top" HorizontalAlignment="Center"
+                                     Width="420px" Height="65" 
+                                     FontSize="22" Margin="0, 110"
+                                     BorderBrush="Teal" BorderThickness="2px"
+                                     Foreground="Teal" FontWeight="SemiBold"/>
+                        <Button materialDesign:ButtonAssist.CornerRadius="30"
+                                VerticalAlignment="Bottom" HorizontalAlignment="Center"
+                                Height="65" Width="220" Background="teal"
+                                Content="PRIJAVI SE" Foreground="WhiteSmoke"
+                                FontSize="25" FontWeight="Bold"
+                                Margin="0,0,0,70" Click="Btn_Login"/>
+                        <Button VerticalAlignment="Bottom" HorizontalAlignment="Center"
+                                Width="300px" Foreground="Teal" Background="Transparent"
+                                BorderBrush="Transparent" Content="Zaboravili ste lozinku?"
+                                FontSize="20" Margin="5" 
+                                Click="Btn_ZaboravljenaLozinka"/>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
