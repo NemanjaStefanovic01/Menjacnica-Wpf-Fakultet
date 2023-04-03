@@ -207,7 +207,8 @@
                                FontSize="40" FontWeight="SemiBold"
                                VerticalAlignment="Top" HorizontalAlignment="Center"
                                Margin="0,30" Foreground="Teal"/>
-                        <PasswordBox Style="{StaticResource MaterialDesignOutlinedPasswordBox}"
+                        <PasswordBox x:Name="Input_password"
+                                     Style="{StaticResource MaterialDesignOutlinedPasswordBox}"
                                      materialDesign:HintAssist.Hint="Password" 
                                      VerticalAlignment="Top" HorizontalAlignment="Center"
                                      Width="420px" Height="65" 

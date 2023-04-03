@@ -29,8 +29,23 @@ namespace MenjacnicaProjekat.View
         public UserService userService = new UserService();
         public FirestoreDb db;
 
-        public List<String> users = new List<String>();
-        public string selectedUser;
+        public List<UserModel> users = new List<UserModel>();
+        public async void SetUserList()
+        {
+            try
+            {
+                users = await userService.GetUsersList(db);
+            }
+            finally
+            {
+                userSelectLabel_firstUser.Text = users[0].UserName;
+                userSelectLabel_secondUser.Text = users[1].UserName;
+                userSelectLabel_thirdUser.Text = users[2].UserName;
+                userSelectLabel_fourthUser.Text = users[3].UserName;
+            }
+        }
+
+        public UserModel selectedUser;
 
         List<Button> buttonList = new List<Button>();
         string[] uidList = { "btn0", "btn1", "btn2", "btn3" };
@@ -42,17 +57,8 @@ namespace MenjacnicaProjekat.View
             //Povezi se na bazu
             db = userService.GetConnection();
 
-            //Popunjavanje liste korisnika
-            users.Add("Nemanja");
-            users.Add("Milovan");
-            users.Add("Jovana");
-            users.Add("Radovan");
-
-            //Update UI po listi korisnika
-            userSelectLabel_firstUser.Text = users[0];
-            userSelectLabel_secondUser.Text = users[1];
-            userSelectLabel_thirdUser.Text = users[2];
-            userSelectLabel_fourthUser.Text = users[3];
+            //Popunjavanje liste korisnika i Update UI po listi korisnika
+            SetUserList();
 
             //Dodavanje dugmica u listu dugmica
             foreach (string uid in uidList)
@@ -81,30 +87,53 @@ namespace MenjacnicaProjekat.View
         //Login functionality
         private void Btn_Login(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine("Pritisnuto login dugme");
+            if(selectedUser == null)
+            {
+                MessageBox.Show("Morate odabrati korisnika");
+                return;
+            }
 
-            DateTime now = DateTime.Now;
-            string date = now.ToString("dd/MM/yyyy");
-            string time = now.ToString("HH:mm");
-            string dateCreated = date + " " + time;
+            string password = Input_password.Password;
+            
+            if (!ValidatePassword(password))
+            {
+                Input_password.Password = string.Empty;
+                return;
+            }
+            
+            if(password != selectedUser.Password)
+            {
+                MessageBox.Show("Uneli ste pogresnu lozinku");
+                Input_password.Password = string.Empty;
+                return;
+            }
 
-            UserModel user = new UserModel();
+            //Uloguj korisnika
+            MessageBox.Show("Usepesno ste se ulogovali");
+        }
+        private bool ValidatePassword(string password)
+        {
+            if (password.Length <= 6)
+            {
+                MessageBox.Show("Lozinka mora biti duza od 6 karaktera!");
+                return false;
+            }
+            if (!password.Any(char.IsUpper))
+            {
+                MessageBox.Show("Lozinka mora imati velika slova!");
+                return false;
+            }
+            if (!password.Any(char.IsDigit))
+            {
+                MessageBox.Show("Lozinka mora imati brojeve!");
+                return false;
+            }
 
-            user.Ime = "Jovana";
-            user.Prezime = "Milovanovic";
-            user.UserName = "JovanaM";
-            user.Password = "jovana123";
-            user.Funkcija = "User";
-            user.BrTelefona = "062/9502345";
-            user.DateCreated = dateCreated;
-            user.Status = "Active";
-
-            Debug.WriteLine("user" + user.UserName);
-            userService.AddUserWithAutoId(db, user);
+            return true;
         }
 
-
         //Mis
+        
         private void Btn_UserSelected(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;
@@ -120,7 +149,7 @@ namespace MenjacnicaProjekat.View
                 }
             }
 
-            login_userLabel.Text = selectedUser;
+            login_userLabel.Text = selectedUser.UserName;
 
             //Style
             Color goldenYellow = (Color)ColorConverter.ConvertFromString("#FFC000");
@@ -146,6 +175,7 @@ namespace MenjacnicaProjekat.View
                 }
             }
         }
+        
         public Border FindParentBorderOfButton(Button button)
         {
             DependencyObject parent = VisualTreeHelper.GetParent(button);
@@ -157,12 +187,30 @@ namespace MenjacnicaProjekat.View
 
             return border;
         }
-
         
         private void Btn_ZaboravljenaLozinka(object sender, RoutedEventArgs e)
         {
-            //Napravi custom prozor koji se otvori umesto ogavnog message boxa
-            MessageBox.Show("Na vas broj telefona će vam stici privremena lozinka!");
-        }
+            MessageBox.Show("Na Vaš broj telefona će vam stici privremena lozinka!");
+        } 
     }
 }
+//registracija usera
+
+//DateTime now = DateTime.Now;
+//string date = now.ToString("dd/MM/yyyy");
+//string time = now.ToString("HH:mm");
+//string dateCreated = date + " " + time;
+
+//UserModel user = new UserModel();
+
+//user.Ime = "Milovan";
+//user.Prezime = "Bozic";
+//user.UserName = "MilovanB";
+//user.Password = "milovan123";
+//user.Funkcija = "User";
+//user.BrTelefona = "061/3394503";
+//user.DateCreated = dateCreated;
+//user.Status = "Active";
+
+//Debug.WriteLine("user" + user.UserName);
+//userService.AddUserWithCustomId(db, user);
