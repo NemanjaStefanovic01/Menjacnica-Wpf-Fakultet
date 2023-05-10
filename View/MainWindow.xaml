@@ -5,8 +5,199 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MenjacnicaProjekat"
         mc:Ignorable="d"
-        Title="MainWindow" Height="1080" Width="1920">
-    <Grid>
+        Height="1080" Width="1920"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
+        WindowStyle="None"
         
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200px"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <!--Window control-->
+        <StackPanel Grid.Column="1" 
+                    Orientation="Horizontal"
+                    VerticalAlignment="Top" HorizontalAlignment="Right"
+                    Margin="5">
+            <Button Height="35" Width="35"
+                    Background="Transparent" BorderBrush="Transparent"
+                    Padding="0"
+                    Click="BtnMinimize"
+                    Margin="5">
+                <materialDesign:PackIcon Kind="Minus" 
+                                         VerticalAlignment="Center" HorizontalAlignment="Center"
+                                         Foreground="Teal"
+                                         Height="35" Width="35"/>
+            </Button>
+            <Button Height="35" Width="35"
+                    Background="Transparent" BorderBrush="Transparent"
+                    Padding="0"
+                    Click="BtnClose"
+                    Margin="5">
+                <materialDesign:PackIcon Kind="Close" 
+                                         VerticalAlignment="Center" HorizontalAlignment="Center"
+                                         Foreground="Teal"
+                                         Height="35" Width="35"/>
+            </Button>
+        </StackPanel>
+
+        <!--Top bar with menues-->
+        <Grid Grid.Column="1"
+              VerticalAlignment="Top" HorizontalAlignment="Stretch"
+              Height="80">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300px"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="300px"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0" x:Name="Label_CurrentUser"
+                       HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                       Margin="10" Text="NemanjaS"
+                       Foreground="#8ac2bd" FontSize="25" FontWeight="SemiBold"/>
+
+            <Menu Grid.Column="1"
+                  HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                  Height="50" FontSize="12" Foreground="Teal"
+                  Padding="0">
+                <MenuItem Margin="0,0,17,0">
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Table" VerticalAlignment="Center"
+                                                     Margin="0,0,5,0" Height="35" Width="35"/>
+                            <TextBlock Text="Kursne Liste" VerticalAlignment="Center"
+                                       FontSize="20" Width="120" TextTrimming="WordEllipsis"
+                                       FontWeight="SemiBold"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+                <MenuItem>
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="FileEyeOutline" VerticalAlignment="Center"
+                                                     Margin="0,0,5,0" Height="35" Width="35"/>
+                            <TextBlock Text="Pregled" VerticalAlignment="Center"
+                                       FontSize="20" Width="120" TextTrimming="WordEllipsis"
+                                       FontWeight="SemiBold"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+                <MenuItem>
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="FileChartOutline" VerticalAlignment="Center"
+                                                     Margin="0,0,5,0" Height="35" Width="35"/>
+                            <TextBlock Text="Izveštaji" VerticalAlignment="Center"
+                                       FontSize="20" Width="120" TextTrimming="WordEllipsis"
+                                       FontWeight="SemiBold"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+            </Menu>
+
+        </Grid>
+        <Rectangle Grid.Column="1" 
+                   VerticalAlignment="Top" HorizontalAlignment="Stretch"
+                   Height="2" Fill="#D9D9D9"
+                   Margin="0,80,0,0"/>
+
+        <!--Cursor for tab control-->
+        <Border x:Name="GridCursor" CornerRadius="5, 0, 0, 5"
+                HorizontalAlignment="Left" VerticalAlignment="Top"
+                Margin="195,170,0,0" Panel.ZIndex="2"
+                Height="227" Width="5" Background="#FFC000">
+            
+        </Border>
+
+        <!--Tab control-->
+        <Grid Grid.Column="0" Background="Teal">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="170"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Button Grid.Row="0" Height="160"
+                    Background="Transparent" BorderThickness="0"
+                    VerticalAlignment="Top"
+                    Uid="0" Click="TabButton_Click">
+                <materialDesign:PackIcon Kind="AccountCircle"
+                                         Foreground="WhiteSmoke"
+                                         Height="140" Width="140"/>
+            </Button>
+            <Button Grid.Row="1" Height="220"
+                    Background="Transparent" BorderThickness="0"
+                    VerticalAlignment="Center" Padding="0"
+                    Uid="1" Click="TabButton_Click">
+                <Grid Height="220" Width="195">
+                    <materialDesign:PackIcon Kind="SunClock" Foreground="WhiteSmoke"
+                                             Height="150" Width="150" Margin="0,5,0,0"
+                                             VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                    <TextBlock Text="POČETAK" Foreground="WhiteSmoke"
+                               FontSize="20" Margin="0,30"
+                               VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+                    <TextBlock Text="DANA" Foreground="White"
+                               FontSize="20" Margin="5" 
+                               VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+                </Grid>
+            </Button>
+            <Button Grid.Row="2" Height="220"
+                    Background="Transparent" BorderThickness="0"
+                    VerticalAlignment="Center" Padding="0"
+                    Uid="2" Click="TabButton_Click">
+                <Grid Height="220" Width="195">
+                    <materialDesign:PackIcon Kind="CashSync" Foreground="WhiteSmoke"
+                                             Height="150" Width="150" Margin="0,5,0,0"
+                                             VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                    <TextBlock Text="TRANSAKCIJE" Foreground="WhiteSmoke"
+                               FontSize="20" Margin="0,30"
+                               VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+                </Grid>
+            </Button>
+            <Button Grid.Row="3" Height="220"
+                    Background="Transparent" BorderThickness="0"
+                    VerticalAlignment="Center" Padding="0"
+                    Uid="3" Click="TabButton_Click">
+                <Grid Height="220" Width="195">
+                    <materialDesign:PackIcon Kind="FileDocumentOutline" Foreground="WhiteSmoke"
+                                             Height="150" Width="150" Margin="0,5,0,0"
+                                             VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                    <TextBlock Text="PLATNI" Foreground="WhiteSmoke"
+                               FontSize="20" Margin="0,30"
+                               VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+                    <TextBlock Text="PROMET" Foreground="White"
+                               FontSize="20" Margin="5" 
+                               VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+                </Grid>
+            </Button>
+            <Button Grid.Row="4" Height="220"
+                    Background="Transparent" BorderThickness="0"
+                    VerticalAlignment="Center" Padding="0"
+                    Uid="4" Click="TabButton_Click">
+                <Grid Height="220" Width="195">
+                    <materialDesign:PackIcon Kind="ThemeLightDark" Foreground="WhiteSmoke"
+                                             Height="150" Width="150" Margin="0,5,0,0"
+                                             VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                    <TextBlock Text="ZAVRSETAK" Foreground="WhiteSmoke"
+                               FontSize="20" Margin="0,30"
+                               VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+                    <TextBlock Text="DANA" Foreground="White"
+                               FontSize="20" Margin="5" 
+                               VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+                </Grid>
+            </Button>
+        </Grid>
+
     </Grid>
 </Window>

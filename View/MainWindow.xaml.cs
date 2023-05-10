@@ -24,5 +24,41 @@ namespace MenjacnicaProjekat
         {
             InitializeComponent();
         }
+
+        //Win control functions
+        private void BtnClose(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+        private void BtnMinimize(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        //User Controle
+        private void TabButton_Click(object sender, RoutedEventArgs e)
+        {
+            int index = int.Parse(((Button)e.Source).Uid);
+
+            if(index != 0)
+            {
+                MoveCursorMenu(index);
+            }
+            else
+            {
+                CursorForProfile();
+            } 
+        }
+        private void MoveCursorMenu(int index)
+        {
+            Color goldenYellow = (Color)ColorConverter.ConvertFromString("#FFC000");
+            GridCursor.Background = new SolidColorBrush(goldenYellow);
+
+            GridCursor.Margin = new Thickness(195, 170 + (227 * (index-1)), 0, 0);
+        }
+        private void CursorForProfile()
+        {
+            GridCursor.Background = Brushes.Transparent;
+        }
     }
 }

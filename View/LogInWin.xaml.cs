@@ -109,7 +109,11 @@ namespace MenjacnicaProjekat.View
             }
 
             //Uloguj korisnika
-            MessageBox.Show("Usepesno ste se ulogovali");
+            MainWindow win = new MainWindow();
+            win.Show();
+            this.Close();
+
+            //MessageBox.Show("Usepesno ste se ulogovali");
         }
         private bool ValidatePassword(string password)
         {

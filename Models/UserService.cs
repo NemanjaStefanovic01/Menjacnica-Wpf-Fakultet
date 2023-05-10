@@ -84,7 +84,7 @@ namespace MenjacnicaProjekat.Models
                 }
                 else
                 {
-                    MessageBox.Show("Didnt find any users");
+                    MessageBox.Show("Didn't find any users");
                 }
             }
 
