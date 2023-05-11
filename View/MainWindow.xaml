@@ -61,26 +61,63 @@
                 <ColumnDefinition Width="300px"/>
             </Grid.ColumnDefinitions>
 
+            <!--User text block-->
             <TextBlock Grid.Column="0" x:Name="Label_CurrentUser"
                        HorizontalAlignment="Left" VerticalAlignment="Bottom"
                        Margin="10" Text="NemanjaS"
                        Foreground="#8ac2bd" FontSize="25" FontWeight="SemiBold"/>
 
+            <!--Menu-->
             <Menu Grid.Column="1"
                   HorizontalAlignment="Center" VerticalAlignment="Bottom"
                   Height="50" FontSize="12" Foreground="Teal"
                   Padding="0">
-                <MenuItem Margin="0,0,17,0">
+                <!--Kursne Liste-->
+                <MenuItem Margin="0,0,20,0">
                     <MenuItem.Header>
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="Table" VerticalAlignment="Center"
-                                                     Margin="0,0,5,0" Height="35" Width="35"/>
-                            <TextBlock Text="Kursne Liste" VerticalAlignment="Center"
-                                       FontSize="20" Width="120" TextTrimming="WordEllipsis"
+                            <materialDesign:PackIcon Kind="Table" 
+                                                     VerticalAlignment="Center" Margin="0,0,5,0" 
+                                                     Height="35" Width="35"/>
+                            <TextBlock Text="Kursne Liste" 
+                                       VerticalAlignment="Center" FontSize="20" 
+                                       Width="120" TextTrimming="WordEllipsis" 
                                        FontWeight="SemiBold"/>
                         </StackPanel>
                     </MenuItem.Header>
+
+                    <MenuItem Padding="5">
+                        <MenuItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="TableNetwork" VerticalAlignment="Center"
+                                                         Height="23" Width="23" Margin="0,0,7,0"/>
+                                <TextBlock Text="NBS Kursna Lista" VerticalAlignment="Center" 
+                                           FontSize="18" Width="170" TextTrimming="WordEllipsis"/>
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                    <MenuItem Padding="5">
+                        <MenuItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="TablePlus" VerticalAlignment="Center" 
+                                                         Height="23" Width="23" Margin="0,0,7,0"/>
+                                <TextBlock Text="Kreiraj Kursnu Listu" VerticalAlignment="Center" 
+                                           FontSize="18" Width="170" TextTrimming="WordEllipsis"/>
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                    <MenuItem Padding="5">
+                        <MenuItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="TableEye" VerticalAlignment="Center" 
+                                                         Height="23" Width="23" Margin="0,0,7,0"/>
+                                <TextBlock Text="Vaša Kursna Lista" VerticalAlignment="Center" 
+                                           FontSize="18" Width="170" TextTrimming="WordEllipsis"/>
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
                 </MenuItem>
+                <!--Pregled-->
                 <MenuItem>
                     <MenuItem.Header>
                         <StackPanel Orientation="Horizontal">
@@ -91,7 +128,39 @@
                                        FontWeight="SemiBold"/>
                         </StackPanel>
                     </MenuItem.Header>
+
+                    <MenuItem Padding="5">
+                        <MenuItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="CashRegister" VerticalAlignment="Center"
+                                                         Height="23" Width="23" Margin="0,0,7,0"/>
+                                <TextBlock Text="Blagajna" VerticalAlignment="Center" 
+                                           FontSize="18" Width="150" TextTrimming="WordEllipsis"/>
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                    <MenuItem Padding="5">
+                        <MenuItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="SwapHorizontal" VerticalAlignment="Center" 
+                                                         Height="23" Width="23" Margin="0,0,7,0"/>
+                                <TextBlock Text="Transakcije" VerticalAlignment="Center" 
+                                           FontSize="18" Width="130" TextTrimming="WordEllipsis"/>
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                    <MenuItem Padding="5">
+                        <MenuItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="FileDocumentOutline" VerticalAlignment="Center" 
+                                                         Height="23" Width="23" Margin="0,0,7,0"/>
+                                <TextBlock Text="Platni Promet" VerticalAlignment="Center" 
+                                           FontSize="18" Width="150" TextTrimming="WordEllipsis"/>
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
                 </MenuItem>
+                <!--Izvestaji-->
                 <MenuItem>
                     <MenuItem.Header>
                         <StackPanel Orientation="Horizontal">
@@ -102,10 +171,125 @@
                                        FontWeight="SemiBold"/>
                         </StackPanel>
                     </MenuItem.Header>
+
+                    <MenuItem Padding="5">
+                        <MenuItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="FileTableOutline" VerticalAlignment="Center"
+                                                         Height="23" Width="23" Margin="0,0,7,0"/>
+                                <TextBlock Text="NBS Kursna Lista" VerticalAlignment="Center" 
+                                           FontSize="18" Width="200" TextTrimming="WordEllipsis"/>
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                    <MenuItem Padding="5">
+                        <MenuItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="FileTableOutline" VerticalAlignment="Center" 
+                                                         Height="23" Width="23" Margin="0,0,7,0"/>
+                                <TextBlock Text="Vaša Kurnsa Lista" VerticalAlignment="Center" 
+                                           FontSize="18" Width="200" TextTrimming="WordEllipsis"/>
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                    <MenuItem Padding="5">
+                        <MenuItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="FileChartOutline" VerticalAlignment="Center" 
+                                                         Height="23" Width="23" Margin="0,0,7,0"/>
+                                <TextBlock Text="Početno Stanje Blagajne" VerticalAlignment="Center" 
+                                           FontSize="18" Width="200" TextTrimming="WordEllipsis"/>
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                    <MenuItem Padding="5">
+                        <MenuItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="FileChartOutline" VerticalAlignment="Center" 
+                                                         Height="23" Width="23" Margin="0,0,7,0"/>
+                                <TextBlock Text="Provizija" VerticalAlignment="Center" 
+                                           FontSize="18" Width="200" TextTrimming="WordEllipsis"/>
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                    <MenuItem Padding="5">
+                        <MenuItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="FileChartOutline" VerticalAlignment="Center" 
+                                                         Height="23" Width="23" Margin="0,0,7,0"/>
+                                <TextBlock Text="MinMax Iznosi" VerticalAlignment="Center" 
+                                           FontSize="18" Width="200" TextTrimming="WordEllipsis"/>
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                    <MenuItem Padding="5">
+                        <MenuItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="FileChartOutline" VerticalAlignment="Center" 
+                                                         Height="23" Width="23" Margin="0,0,7,0"/>
+                                <TextBlock Text="Krajnje Stanje Blagajne" VerticalAlignment="Center" 
+                                           FontSize="18" Width="200" TextTrimming="WordEllipsis"/>
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                    <MenuItem Padding="5">
+                        <MenuItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="FileChartOutline" VerticalAlignment="Center" 
+                                                         Height="23" Width="23" Margin="0,0,7,0"/>
+                                <TextBlock Text="Zbirni Dnevnik Blagajne" VerticalAlignment="Center" 
+                                           FontSize="18" Width="200" TextTrimming="WordEllipsis"/>
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                    <MenuItem Padding="5">
+                        <MenuItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="FileChartOutline" VerticalAlignment="Center" 
+                                                         Height="23" Width="23" Margin="0,0,7,0"/>
+                                <TextBlock Text="Oštećene Novčanice" VerticalAlignment="Center" 
+                                           FontSize="18" Width="200" TextTrimming="WordEllipsis"/>
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                </MenuItem>
+                <!--Podesavanja-->
+                <MenuItem>
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="CogOutline" VerticalAlignment="Center"
+                                                     Margin="0,0,5,0" Height="35" Width="35"/>
+                            <TextBlock Text="Podešavanja" VerticalAlignment="Center"
+                                       FontSize="20" Width="120" TextTrimming="WordEllipsis"
+                                       FontWeight="SemiBold"/>
+                        </StackPanel>
+                    </MenuItem.Header>
+
+                    <MenuItem Padding="5">
+                        <MenuItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="KeyboardOutline" VerticalAlignment="Center"
+                                                         Height="23" Width="23" Margin="0,0,7,0"/>
+                                <TextBlock Text="Prečice" VerticalAlignment="Center" 
+                                           FontSize="18" Width="150" TextTrimming="WordEllipsis"/>
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
+                    <MenuItem Padding="5">
+                        <MenuItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Help" VerticalAlignment="Center" 
+                                                         Height="23" Width="23" Margin="0,0,7,0"/>
+                                <TextBlock Text="Pomoć" VerticalAlignment="Center" 
+                                           FontSize="18" Width="130" TextTrimming="WordEllipsis"/>
+                            </StackPanel>
+                        </MenuItem.Header>
+                    </MenuItem>
                 </MenuItem>
             </Menu>
 
         </Grid>
+        <!--Separator under menu-->
         <Rectangle Grid.Column="1" 
                    VerticalAlignment="Top" HorizontalAlignment="Stretch"
                    Height="2" Fill="#D9D9D9"
@@ -128,13 +312,14 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
+            
             <Button Grid.Row="0" Height="160"
                     Background="Transparent" BorderThickness="0"
                     VerticalAlignment="Top"
                     Uid="0" Click="TabButton_Click">
                 <materialDesign:PackIcon Kind="AccountCircle"
                                          Foreground="WhiteSmoke"
-                                         Height="140" Width="140"/>
+                                         Height="120" Width="120"/>
             </Button>
             <Button Grid.Row="1" Height="220"
                     Background="Transparent" BorderThickness="0"
@@ -142,13 +327,13 @@
                     Uid="1" Click="TabButton_Click">
                 <Grid Height="220" Width="195">
                     <materialDesign:PackIcon Kind="SunClock" Foreground="WhiteSmoke"
-                                             Height="150" Width="150" Margin="0,5,0,0"
+                                             Height="130" Width="130" Margin="0,5,0,0"
                                              VerticalAlignment="Top" HorizontalAlignment="Center"/>
                     <TextBlock Text="POČETAK" Foreground="WhiteSmoke"
-                               FontSize="20" Margin="0,30"
+                               FontSize="20" Margin="0,35"
                                VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
                     <TextBlock Text="DANA" Foreground="White"
-                               FontSize="20" Margin="5" 
+                               FontSize="20" Margin="10" 
                                VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
                 </Grid>
             </Button>
@@ -158,10 +343,10 @@
                     Uid="2" Click="TabButton_Click">
                 <Grid Height="220" Width="195">
                     <materialDesign:PackIcon Kind="CashSync" Foreground="WhiteSmoke"
-                                             Height="150" Width="150" Margin="0,5,0,0"
+                                             Height="130" Width="130" Margin="0,5,0,0"
                                              VerticalAlignment="Top" HorizontalAlignment="Center"/>
                     <TextBlock Text="TRANSAKCIJE" Foreground="WhiteSmoke"
-                               FontSize="20" Margin="0,30"
+                               FontSize="20" Margin="0,35"
                                VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
                 </Grid>
             </Button>
@@ -171,13 +356,13 @@
                     Uid="3" Click="TabButton_Click">
                 <Grid Height="220" Width="195">
                     <materialDesign:PackIcon Kind="FileDocumentOutline" Foreground="WhiteSmoke"
-                                             Height="150" Width="150" Margin="0,5,0,0"
+                                             Height="130" Width="130" Margin="0,5,0,0"
                                              VerticalAlignment="Top" HorizontalAlignment="Center"/>
                     <TextBlock Text="PLATNI" Foreground="WhiteSmoke"
-                               FontSize="20" Margin="0,30"
+                               FontSize="20" Margin="0,35"
                                VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
                     <TextBlock Text="PROMET" Foreground="White"
-                               FontSize="20" Margin="5" 
+                               FontSize="20" Margin="10" 
                                VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
                 </Grid>
             </Button>
@@ -187,13 +372,13 @@
                     Uid="4" Click="TabButton_Click">
                 <Grid Height="220" Width="195">
                     <materialDesign:PackIcon Kind="ThemeLightDark" Foreground="WhiteSmoke"
-                                             Height="150" Width="150" Margin="0,5,0,0"
+                                             Height="130" Width="130" Margin="0,5,0,0"
                                              VerticalAlignment="Top" HorizontalAlignment="Center"/>
                     <TextBlock Text="ZAVRSETAK" Foreground="WhiteSmoke"
-                               FontSize="20" Margin="0,30"
+                               FontSize="20" Margin="0,35"
                                VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
                     <TextBlock Text="DANA" Foreground="White"
-                               FontSize="20" Margin="5" 
+                               FontSize="20" Margin="10" 
                                VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
                 </Grid>
             </Button>
