@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="MenjacnicaProjekat.View.UC_PocetakDana"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MenjacnicaProjekat.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="1000" d:DesignWidth="1720"
+             
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+    <Grid Background="Transparent">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="0" VerticalAlignment="Center"
+                Width="520" Height="720"
+                BorderThickness="1" BorderBrush="#D9D9D9"
+                CornerRadius="20 20 20 20">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="1" BlurRadius="5" Opacity="0.5" Color="Black"/>
+            </Border.Effect>
+            <Grid Grid.Column="0" VerticalAlignment="Center"
+              Width="520" Height="720">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="250"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Border Background="Teal" Margin="1 1 0 1"
+                            CornerRadius="22 22 0 0" BorderThickness="0"/>
+                    <TextBlock Text="PREUZIMANJE PODATAKA" Foreground="WhiteSmoke"
+                               FontSize="27" FontWeight="SemiBold"
+                               VerticalAlignment="Bottom" HorizontalAlignment="Center"
+                               Margin="0 0 0 15"/>
+                    <materialDesign:PackIcon Kind="CloudDownload" Foreground="WhiteSmoke"
+                                             HorizontalAlignment="Center" VerticalAlignment="Top"
+                                             Height="180" Width="180"/>
+                </Grid>
+                <Grid Grid.Row="1" Background="WhiteSmoke">
+                    <TextBlock Text="Preuzmi podatke sa servera Narodne banke Srbije."
+                               TextWrapping="Wrap" TextAlignment="Center"
+                               FontSize="24" Foreground="Teal"
+                               Width="250" Height="100"
+                               VerticalAlignment="Top" Margin="0 100 0 0"/>
+                    <Button VerticalAlignment="Bottom" Margin="0 0 0 150"
+                            Height="60" Width="190"
+                            Foreground="WhiteSmoke" FontSize="25" FontWeight="SemiBold"
+                            Content="PREUZMI"/>
+                </Grid>
+            </Grid>
+        </Border>
+
+    </Grid>
+</UserControl>

@@ -47,7 +47,32 @@ namespace MenjacnicaProjekat
             else
             {
                 CursorForProfile();
-            } 
+            }
+
+            //User Cotnroles
+            switch (index)
+            {
+                case 0:
+                    GridUserContol.Children.Clear();
+                    //GridUserContol.Children.Add(new View.UC_PocetakDana());
+                    break;
+                case 1:
+                    GridUserContol.Children.Clear();
+                    GridUserContol.Children.Add(new View.UC_PocetakDana());
+                    break;
+                case 2:
+                    GridUserContol.Children.Clear();
+                    //GridUserContol.Children.Add(new View.UC_PocetakDana());
+                    break;
+                case 3:
+                    GridUserContol.Children.Clear();
+                    //GridUserContol.Children.Add(new View.UC_PocetakDana());
+                    break;
+                case 4:
+                    GridUserContol.Children.Clear();
+                    //GridUserContol.Children.Add(new View.UC_PocetakDana());
+                    break;
+            }
         }
         private void MoveCursorMenu(int index)
         {
