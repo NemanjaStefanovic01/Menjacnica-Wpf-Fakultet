@@ -387,7 +387,7 @@
         <Grid x:Name="GridUserContol" Grid.Column="1"
               VerticalAlignment="Bottom" HorizontalAlignment="Right"
               Height="1000" Width="1720">
-            
+            <ContentControl x:Name="mainContentControl" />
         </Grid>
     </Grid>
 </Window>

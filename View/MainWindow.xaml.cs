@@ -23,6 +23,7 @@ namespace MenjacnicaProjekat
         public MainWindow()
         {
             InitializeComponent();
+            this.mainContentControl.Content = new View.UC_PocetakDana();
         }
 
         //Win control functions
@@ -66,11 +67,13 @@ namespace MenjacnicaProjekat
                     break;
                 case 3:
                     GridUserContol.Children.Clear();
-                    //GridUserContol.Children.Add(new View.UC_PocetakDana());
+                    GridUserContol.Children.Add(new View.UC_Izrada());
                     break;
                 case 4:
                     GridUserContol.Children.Clear();
-                    //GridUserContol.Children.Add(new View.UC_PocetakDana());
+                    GridUserContol.Children.Add(new View.UC_ZavrsetakDana());
+                    break;
+                default:
                     break;
             }
         }
