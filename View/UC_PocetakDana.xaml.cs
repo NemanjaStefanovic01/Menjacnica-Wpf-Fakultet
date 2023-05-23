@@ -12,17 +12,23 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MenjacnicaProjekat.Models;
+
 
 namespace MenjacnicaProjekat.View
 {
-    /// <summary>
-    /// Interaction logic for UC_PocetakDana.xaml
-    /// </summary>
     public partial class UC_PocetakDana : UserControl
     {
+        public ScreapeService scraper = new ScreapeService();
         public UC_PocetakDana()
         {
             InitializeComponent();
+        }
+
+        private void Btn_Preuzmi(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine("Preuzmi");
+            scraper.ScrapeFromNBS();
         }
     }
 }

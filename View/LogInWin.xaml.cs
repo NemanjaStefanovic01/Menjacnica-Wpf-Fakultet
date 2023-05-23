@@ -178,6 +178,9 @@ namespace MenjacnicaProjekat.View
                     }
                 }
             }
+
+            //Focus to password box
+            Input_password.Focus();
         }
         
         public Border FindParentBorderOfButton(Button button)
@@ -196,6 +199,21 @@ namespace MenjacnicaProjekat.View
         {
             MessageBox.Show("Na Vaš broj telefona će vam stici privremena lozinka!");
         } 
+
+        //Keydown Functions
+        private void KeyDown_PasswordBox(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Enter)
+            {
+                e.Handled = true;
+
+                if(sender == Input_password)
+                {
+                    Btn_Login(sender, e);
+                }
+            }
+        }
+
     }
 }
 //registracija usera
