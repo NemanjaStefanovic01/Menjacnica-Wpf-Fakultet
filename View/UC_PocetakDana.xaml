@@ -133,7 +133,7 @@
                 <Grid Grid.Row="0">
                     <Border Background="Teal" Margin="1 1 0 1"
                             CornerRadius="22 22 0 0" BorderThickness="0"/>
-                    <TextBlock Text="PREUZIMANJE PODATAKA" Foreground="WhiteSmoke"
+                    <TextBlock Text="POČETAK DANA" Foreground="WhiteSmoke"
                                FontSize="27" FontWeight="SemiBold"
                                VerticalAlignment="Bottom" HorizontalAlignment="Center"
                                Margin="0 0 0 15"/>
@@ -150,7 +150,7 @@
                     <Button VerticalAlignment="Bottom" Margin="0 0 0 150"
                             Height="60" Width="190"
                             Foreground="WhiteSmoke" FontSize="25" FontWeight="SemiBold"
-                            Content="PREUZMI"/>
+                            Content="ZAPOČNI"/>
                 </Grid>
             </Grid>
         </Border>

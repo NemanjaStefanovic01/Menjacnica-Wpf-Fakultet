@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,7 @@ namespace MenjacnicaProjekat.View
     public partial class UC_PocetakDana : UserControl
     {
         public ScreapeService scraper = new ScreapeService();
+        public KursnaLista kursnaListaNBS = new KursnaLista();
         public UC_PocetakDana()
         {
             InitializeComponent();
@@ -27,8 +29,10 @@ namespace MenjacnicaProjekat.View
 
         private void Btn_Preuzmi(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine("Preuzmi");
-            scraper.ScrapeFromNBS();
+            Debug.WriteLine("Preuzmi");
+            kursnaListaNBS = scraper.ScrapeFromNBS();
+
+            Debug.WriteLine(kursnaListaNBS.GetValutaAtIndex(0).prodajniKurs);
         }
     }
 }

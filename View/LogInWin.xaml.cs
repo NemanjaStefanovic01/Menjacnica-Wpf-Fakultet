@@ -13,16 +13,16 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+
 using Color = System.Windows.Media.Color;
 using ColorConverter = System.Windows.Media.ColorConverter;
+
 using Google.Cloud.Firestore;
+
 using MenjacnicaProjekat.Models;
 
 namespace MenjacnicaProjekat.View
 {
-    /// <summary>
-    /// Interaction logic for LogInWin.xaml
-    /// </summary>
     public partial class LogInWin : Window
     {
         //Database connection and user models
