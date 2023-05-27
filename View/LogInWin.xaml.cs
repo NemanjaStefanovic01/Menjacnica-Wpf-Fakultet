@@ -103,7 +103,7 @@ namespace MenjacnicaProjekat.View
             
             if(password != selectedUser.Password)
             {
-                MessageBox.Show("Uneli ste pogresnu lozinku");
+                MessageBox.Show("Uneli ste pogresnu lozinku!");
                 Input_password.Password = string.Empty;
                 return;
             }
@@ -119,17 +119,17 @@ namespace MenjacnicaProjekat.View
         {
             if (password.Length <= 6)
             {
-                MessageBox.Show("Lozinka mora biti duza od 6 karaktera!");
+                MessageBox.Show("Uneli ste pogresnu lozinku!");
                 return false;
             }
             if (!password.Any(char.IsUpper))
             {
-                MessageBox.Show("Lozinka mora imati velika slova!");
+                MessageBox.Show("Uneli ste pogresnu lozinku!");
                 return false;
             }
             if (!password.Any(char.IsDigit))
             {
-                MessageBox.Show("Lozinka mora imati brojeve!");
+                MessageBox.Show("Uneli ste pogresnu lozinku!");
                 return false;
             }
 
@@ -162,7 +162,7 @@ namespace MenjacnicaProjekat.View
             Border border = FindParentBorderOfButton(button);
 
             border.BorderBrush = new SolidColorBrush(goldenYellow);
-            border.BorderThickness = new Thickness(2);
+            border.BorderThickness = new Thickness(3);
             
             //Skini boju sa proslog selektovanog dugmeta
             foreach (Button btn in buttonList)
