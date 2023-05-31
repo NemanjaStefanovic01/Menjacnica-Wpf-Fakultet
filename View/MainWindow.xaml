@@ -86,7 +86,7 @@
                         </StackPanel>
                     </MenuItem.Header>
 
-                    <MenuItem Padding="5">
+                    <MenuItem Padding="5" Click="MenuItem_OpenNBS">
                         <MenuItem.Header>
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="TableNetwork" VerticalAlignment="Center"

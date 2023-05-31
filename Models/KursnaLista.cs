@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +8,7 @@ using MenjacnicaProjekat.Models;
 
 namespace MenjacnicaProjekat.Models
 {
-    public class KursnaLista
+    public class KursnaLista : IEnumerable<ValutaKursneListe>
     {
         public List<ValutaKursneListe> kursnaLista;
 
@@ -24,6 +25,17 @@ namespace MenjacnicaProjekat.Models
         public ValutaKursneListe GetValutaAtIndex(int index)
         {
             return kursnaLista[index];
+        }
+
+        //Making list enumerable
+        public IEnumerator<ValutaKursneListe> GetEnumerator()
+        {
+            return kursnaLista.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
         }
     }
 }

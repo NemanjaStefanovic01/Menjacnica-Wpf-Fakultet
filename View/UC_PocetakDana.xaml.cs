@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MenjacnicaProjekat.Models;
+using MenjacnicaProjekat.SharedData;
 
 
 namespace MenjacnicaProjekat.View
@@ -31,8 +32,9 @@ namespace MenjacnicaProjekat.View
         {
             Debug.WriteLine("Preuzmi");
             kursnaListaNBS = scraper.ScrapeFromNBS();
-
-            Debug.WriteLine(kursnaListaNBS.GetValutaAtIndex(0).prodajniKurs);
+            
+            //Save kurnsa lista as global
+            GlobalKursneListe.kursnaListaNBS = kursnaListaNBS;
         }
     }
 }

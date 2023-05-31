@@ -77,6 +77,18 @@ namespace MenjacnicaProjekat
                     break;
             }
         }
+
+        //Menu functionality
+        private void MenuItem_OpenNBS(object sender, RoutedEventArgs e) 
+        { 
+            Window existingWindow = Application.Current.MainWindow;
+            Window kursnaListaNBS = new View.SmallerWindows.KursnaListaNBS();
+            kursnaListaNBS.Owner = existingWindow;
+            kursnaListaNBS.Show();
+        }
+
+
+        //Misc
         private void MoveCursorMenu(int index)
         {
             Color goldenYellow = (Color)ColorConverter.ConvertFromString("#FFC000");
