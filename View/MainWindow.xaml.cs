@@ -86,6 +86,13 @@ namespace MenjacnicaProjekat
             kursnaListaNBS.Owner = existingWindow;
             kursnaListaNBS.Show();
         }
+        private void MenuItem_OpenKL(object sender, RoutedEventArgs e)
+        {
+            Window existingWindow = Application.Current.MainWindow;
+            Window kursnaLista = new View.SmallerWindows.KursnaListaMenjaca();
+            kursnaLista.Owner = existingWindow;
+            kursnaLista.Show();
+        }
 
 
         //Misc

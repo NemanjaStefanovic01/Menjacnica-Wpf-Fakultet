@@ -96,17 +96,7 @@
                             </StackPanel>
                         </MenuItem.Header>
                     </MenuItem>
-                    <MenuItem Padding="5">
-                        <MenuItem.Header>
-                            <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="TablePlus" VerticalAlignment="Center" 
-                                                         Height="23" Width="23" Margin="0,0,7,0"/>
-                                <TextBlock Text="Kreiraj Kursnu Listu" VerticalAlignment="Center" 
-                                           FontSize="18" Width="170" TextTrimming="WordEllipsis"/>
-                            </StackPanel>
-                        </MenuItem.Header>
-                    </MenuItem>
-                    <MenuItem Padding="5">
+                    <MenuItem Padding="5" Click="MenuItem_OpenKL">
                         <MenuItem.Header>
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="TableEye" VerticalAlignment="Center" 
