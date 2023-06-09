@@ -36,5 +36,23 @@ namespace MenjacnicaProjekat.View
             //Save kurnsa lista as global
             GlobalKursneListe.kursnaListaNBS = kursnaListaNBS;
         }
+
+        private void Button_KreirajKursnuListu(object sender, RoutedEventArgs e)
+        {
+            Window existingWindow = Application.Current.MainWindow;
+            Window kursnaLista = new View.SmallerWindows.KursnaListaMenjaca();
+            kursnaLista.Owner = existingWindow;
+            kursnaLista.Show();
+        }
+
+        private void Button_ZapocniDan(object sender, RoutedEventArgs e)
+        {
+            Window parentWindow = Window.GetWindow(this);
+
+            if (parentWindow is MainWindow yourWindow && kursnaListaNBS.kursnaLista.Count != 0)
+            {
+                yourWindow.ZapocniDan();
+            }
+        }
     }
 }

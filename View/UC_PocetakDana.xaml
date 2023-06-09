@@ -97,7 +97,7 @@
                         <Button VerticalAlignment="Bottom" Margin="0 0 0 70"
                                 Height="60" Width="190"
                                 Foreground="WhiteSmoke" FontSize="25" FontWeight="SemiBold"
-                                Content="KREIRAJ"/>
+                                Content="KREIRAJ" Click="Button_KreirajKursnuListu"/>
                     </Grid>
                     <Grid Grid.Row="1">
                         <TextBlock Text="Odštampaj potrebne izveštaje"
@@ -150,7 +150,7 @@
                     <Button VerticalAlignment="Bottom" Margin="0 0 0 150"
                             Height="60" Width="190"
                             Foreground="WhiteSmoke" FontSize="25" FontWeight="SemiBold"
-                            Content="ZAPOČNI"/>
+                            Content="ZAPOČNI" Click="Button_ZapocniDan"/>
                 </Grid>
             </Grid>
         </Border>

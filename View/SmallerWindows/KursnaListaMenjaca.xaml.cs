@@ -32,22 +32,39 @@ namespace MenjacnicaProjekat.View.SmallerWindows
         public KursnaListaService kursnaListaService = new KursnaListaService();
         public FirestoreDb db;
 
-        public List<UserModel> users = new List<UserModel>();
 
-        //public async void SetUserList()
-        //{
-        //    try
-        //    {
-        //        users = await userService.GetUsersList(db);
-        //    }
-        //    finally
-        //    {
-        //        userSelectLabel_firstUser.Text = users[0].UserName;
-        //        userSelectLabel_secondUser.Text = users[1].UserName;
-        //        userSelectLabel_thirdUser.Text = users[2].UserName;
-        //        userSelectLabel_fourthUser.Text = users[3].UserName;
-        //    }
-        //}
+        public async void GetKursnaLista()
+        {
+            try
+            {
+                kursnaLista = await kursnaListaService.GetKursnaLista(db);
+                Debug.WriteLine("Kursna lista uspesno ucitana");
+                GlobalKursneListe.kursnaListaMenjaca = kursnaLista;
+            }
+            catch(Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+            finally
+            {
+                //Ovo ukoliko na bazi nema nova kursna lista
+                if (kursnaLista.kursnaLista.Count <= 3)
+                {
+                    Debug.WriteLine("kursna lista je bila null tako ta je uzeta kursna lista nbs");
+                    kursnaLista = GlobalKursneListe.kursnaListaNBS;
+                    GlobalKursneListe.kursnaListaMenjaca = kursnaLista;
+                }
+
+                //Ovo ide u svakom slucaju kada se na prvi ili drugi nacin napuni kurnsa lista
+                //Kreira se observable collection kako bi se bindovala sa tabelom
+                if (kursnaLista != null)
+                {
+                    observableCollection = new ObservableCollection<ValutaKursneListe>(kursnaLista);
+                    DataGrid_Kurs.ItemsSource = observableCollection;
+                }
+            }
+            
+        }
 
         public KursnaListaMenjaca()
         {
@@ -55,18 +72,7 @@ namespace MenjacnicaProjekat.View.SmallerWindows
 
             //Dodati ucitavanje kursne liste sa baze
             db = kursnaListaService.GetConnection();
-
-            //Ovo ukoliko na bazi nema nova kursna lista
-            kursnaLista = GlobalKursneListe.kursnaListaNBS;
-            GlobalKursneListe.kursnaListaMenjaca = kursnaLista;
-
-            //Ovo ide u svakom slucaju kada se na prvi ili drugi nacin napuni kurnsa lista
-            //Kreira se observable collection kako bi se bindovala sa tabelom
-            if(kursnaLista != null)
-            {
-                observableCollection = new ObservableCollection<ValutaKursneListe>(kursnaLista);
-                DataGrid_Kurs.ItemsSource = observableCollection;
-            }
+            GetKursnaLista();
         }
         //Save Cancle
         private void Btn_SaveChanges(object sender, RoutedEventArgs e)

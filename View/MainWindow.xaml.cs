@@ -1,6 +1,9 @@
-﻿using System;
+﻿using MaterialDesignThemes.Wpf;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,6 +23,7 @@ namespace MenjacnicaProjekat
     /// </summary>
     public partial class MainWindow : Window
     {
+        public string StanjeDana = "";
         public MainWindow()
         {
             InitializeComponent();
@@ -55,14 +59,14 @@ namespace MenjacnicaProjekat
             {
                 case 0:
                     GridUserContol.Children.Clear();
-                    //GridUserContol.Children.Add(new View.UC_PocetakDana());
+                    GridUserContol.Children.Add(new View.UC_Izrada());
                     break;
                 case 1:
                     GridUserContol.Children.Clear();
                     GridUserContol.Children.Add(new View.UC_PocetakDana());
                     break;
                 case 2:
-                    GridUserContol.Children.Clear();
+                    //GridUserContol.Children.Clear();
                     //GridUserContol.Children.Add(new View.UC_PocetakDana());
                     break;
                 case 3:
@@ -76,6 +80,39 @@ namespace MenjacnicaProjekat
                 default:
                     break;
             }
+        }
+        //Functions for user controls to call
+        public void ZapocniDan()
+        {
+            Debug.WriteLine("Dan zapocet");
+            StanjeDana = "Zapocet";
+
+            //Disable pocetak dana
+            Button btn_PocetakDana = FindButtonByUid(this, "1");
+            btn_PocetakDana.IsEnabled = false;
+
+            //Switch to Transakcije
+            GridUserContol.Children.Clear();
+            GridUserContol.Children.Add(new View.UC_Izrada());
+        }
+        public Button FindButtonByUid(DependencyObject parent, string uid)
+        {
+            if (parent == null)
+                return null;
+
+            if (parent is Button button && button.Uid == uid)
+                return button;
+
+            int childCount = VisualTreeHelper.GetChildrenCount(parent);
+            for (int i = 0; i < childCount; i++)
+            {
+                DependencyObject child = VisualTreeHelper.GetChild(parent, i);
+                Button foundButton = FindButtonByUid(child, uid);
+                if (foundButton != null)
+                    return foundButton;
+            }
+
+            return null;
         }
 
         //Menu functionality

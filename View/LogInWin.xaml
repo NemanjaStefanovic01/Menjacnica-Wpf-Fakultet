@@ -183,7 +183,7 @@
                                                FontSize="21" FontWeight="SemiBold" 
                                                Foreground="Teal"
                                                Margin="0,30"/>
-                                    <TextBlock Text="ADMINISTRAOTR"
+                                    <TextBlock Text="MENJAČ"
                                                Height="220"
                                                VerticalAlignment="Top" HorizontalAlignment="Center"
                                                FontSize="21" FontWeight="SemiBold" 
