@@ -66,8 +66,8 @@ namespace MenjacnicaProjekat
                     GridUserContol.Children.Add(new View.UC_PocetakDana());
                     break;
                 case 2:
-                    //GridUserContol.Children.Clear();
-                    //GridUserContol.Children.Add(new View.UC_PocetakDana());
+                    GridUserContol.Children.Clear();
+                    GridUserContol.Children.Add(new View.UC_Transakcije());
                     break;
                 case 3:
                     GridUserContol.Children.Clear();
