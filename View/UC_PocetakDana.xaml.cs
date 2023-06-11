@@ -23,9 +23,11 @@ namespace MenjacnicaProjekat.View
     {
         public ScreapeService scraper = new ScreapeService();
         public KursnaLista kursnaListaNBS = new KursnaLista();
+        public KursnaLista kursnaListaMenjaca;
         public UC_PocetakDana()
         {
             InitializeComponent();
+            kursnaListaMenjaca = new KursnaLista();
         }
 
         private void Btn_Preuzmi(object sender, RoutedEventArgs e)
@@ -48,8 +50,24 @@ namespace MenjacnicaProjekat.View
         private void Button_ZapocniDan(object sender, RoutedEventArgs e)
         {
             Window parentWindow = Window.GetWindow(this);
+            kursnaListaMenjaca = GlobalKursneListe.kursnaListaMenjaca;
 
-            if (parentWindow is MainWindow yourWindow && kursnaListaNBS.kursnaLista.Count != 0)
+            if (kursnaListaNBS.kursnaLista.Count == 0)
+            {
+                MessageBox.Show("Molimo vas preuzmite kursnu listu Narodne banke Sribije.",
+                                "Greška");
+
+                return;
+            }
+            if (kursnaListaMenjaca == null || kursnaListaMenjaca.kursnaLista == null)
+            {
+                MessageBox.Show("Molimo vas kreirajte kursnu listu menjača.",
+                                "Greška");
+
+                return;
+            }
+
+            if (parentWindow is MainWindow yourWindow)
             {
                 yourWindow.ZapocniDan();
             }

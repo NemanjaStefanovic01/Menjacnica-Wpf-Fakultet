@@ -70,6 +70,65 @@
                             Content="GBP" FontSize="30"
                             Uid="3" Click="Btn_Valuta" Tag="ValutaButton"/>
                 </Grid>
+                
+                <!--Bottom part-->
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="200"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="150"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0">
+                        <Button VerticalAlignment="Center" HorizontalAlignment="Left"
+                                Height="60" Width="220" Margin="160 0 0 0"
+                                Foreground="WhiteSmoke" Background="Teal" FontSize="27" 
+                                Content="Kurs menjača"/>
+                        <TextBox VerticalAlignment="Center" HorizontalAlignment="Right"
+                                 Height="60" Width="420" Margin="0 0 160 0"
+                                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                 Padding="0" TextAlignment="Center"
+                                 BorderBrush="Teal" BorderThickness="3"
+                                 FontSize="32" FontWeight="SemiBold" Foreground="Teal"
+                                 Text="119.45"/>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBox Grid.Column="0" x:Name="Input_IznosValuteOtkupa"
+                                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                 materialDesign:HintAssist.FloatingOffset="0, -35"
+                                 materialDesign:HintAssist.Hint="Iznos valute otkupa"
+                                 VerticalAlignment="Top" HorizontalAlignment="Center"
+                                 Height="75" Width="450" Margin="0 20"
+                                 Padding="20 0" FontSize="30"
+                                 BorderBrush="Teal" BorderThickness="3" Foreground="Teal"/>
+                        
+                        <TextBox Grid.Column="1" x:Name="Input_IznosValuteProdaje"
+                                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                 materialDesign:HintAssist.FloatingOffset="0, -35"
+                                 materialDesign:HintAssist.Hint="Iznos valute prodaje"
+                                 VerticalAlignment="Top" HorizontalAlignment="Center"
+                                 Height="75" Width="450" Margin="0 20"
+                                 Padding="20 0" FontSize="30"
+                                 BorderBrush="Teal" BorderThickness="3" Foreground="Teal"/>
+                    </Grid>
+                    <Grid Grid.Row="2">
+                        <Button Content="OČISTI"
+                                VerticalAlignment="Bottom" HorizontalAlignment="Right"
+                                Margin="0 0 300 30" Height="70" Width="230"
+                                Background="Teal" BorderBrush="Transparent" BorderThickness="0"
+                                Foreground="WhiteSmoke" FontSize="30"/>
+                        <Button Content="SNIMI"
+                                VerticalAlignment="Bottom" HorizontalAlignment="Right"
+                                Margin="30" Height="70" Width="230"
+                                Background="Teal" BorderBrush="Transparent" BorderThickness="0"
+                                Foreground="WhiteSmoke" FontSize="30"/>
+                    </Grid>
+                </Grid>
             </Grid>
         </Border>
     </Grid>

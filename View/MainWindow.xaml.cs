@@ -93,7 +93,7 @@ namespace MenjacnicaProjekat
 
             //Switch to Transakcije
             GridUserContol.Children.Clear();
-            GridUserContol.Children.Add(new View.UC_Izrada());
+            GridUserContol.Children.Add(new View.UC_Transakcije());
         }
         public Button FindButtonByUid(DependencyObject parent, string uid)
         {
