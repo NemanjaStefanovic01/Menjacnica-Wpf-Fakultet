@@ -80,17 +80,18 @@
                     </Grid.RowDefinitions>
 
                     <Grid Grid.Row="0">
-                        <Button VerticalAlignment="Center" HorizontalAlignment="Left"
-                                Height="60" Width="220" Margin="160 0 0 0"
-                                Foreground="WhiteSmoke" Background="Teal" FontSize="27" 
-                                Content="Kurs menjača"/>
+                        <TextBlock Text="Kurs Transakcije: "
+                                   VerticalAlignment="Center" HorizontalAlignment="Left"
+                                   Margin="150 0 0 0" Foreground="Teal"
+                                   FontSize="32" FontWeight="SemiBold"/>
                         <TextBox VerticalAlignment="Center" HorizontalAlignment="Right"
                                  Height="60" Width="420" Margin="0 0 160 0"
                                  Style="{StaticResource MaterialDesignOutlinedTextBox}"
                                  Padding="0" TextAlignment="Center"
                                  BorderBrush="Teal" BorderThickness="3"
                                  FontSize="32" FontWeight="SemiBold" Foreground="Teal"
-                                 Text="119.45"/>
+                                 x:Name="Input_KursTransakcije" IsEnabled="False"
+                                 TextChanged="PostaviKursTransakcije"/>
                     </Grid>
                     <Grid Grid.Row="1">
                         <Grid.ColumnDefinitions>
@@ -123,12 +124,12 @@
                                 VerticalAlignment="Bottom" HorizontalAlignment="Right"
                                 Margin="0 0 300 30" Height="70" Width="230"
                                 Background="Teal" BorderBrush="Transparent" BorderThickness="0"
-                                Foreground="WhiteSmoke" FontSize="30"/>
+                                Foreground="WhiteSmoke" FontSize="30" Click="Button_Ocisti"/>
                         <Button Content="SNIMI"
                                 VerticalAlignment="Bottom" HorizontalAlignment="Right"
                                 Margin="30" Height="70" Width="230"
                                 Background="Teal" BorderBrush="Transparent" BorderThickness="0"
-                                Foreground="WhiteSmoke" FontSize="30"/>
+                                Foreground="WhiteSmoke" FontSize="30" Click="Button_Snimi"/>
                     </Grid>
                 </Grid>
             </Grid>

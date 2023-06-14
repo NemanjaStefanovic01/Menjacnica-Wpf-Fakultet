@@ -16,6 +16,11 @@ using System.Windows.Shapes;
 using MenjacnicaProjekat.SharedData;
 using System.Diagnostics;
 using System.Windows.Media.Converters;
+using System.Security.Cryptography.X509Certificates;
+using MenjacnicaProjekat.View.SmallerWindows;
+
+using Google.Cloud.Firestore;
+using MaterialDesignThemes.Wpf;
 
 namespace MenjacnicaProjekat.View
 {
@@ -24,6 +29,10 @@ namespace MenjacnicaProjekat.View
     /// </summary>
     public partial class UC_Transakcije : UserControl
     {
+        //Database connection and user models
+        public TransakcijaService transService = new TransakcijaService();
+        public FirestoreDb db;
+
         public List<ValutaKursneListe> valute = new List<ValutaKursneListe>();
         public List<string> oznakePotebnihValuti = new List<string>();
         
@@ -44,6 +53,8 @@ namespace MenjacnicaProjekat.View
             oznakePotebnihValuti.Add("GBP");
 
             valute = DobaviOdabraneValute(oznakePotebnihValuti);
+
+            db = transService.GetConnection();
         }
 
         //Header buttons
@@ -82,7 +93,11 @@ namespace MenjacnicaProjekat.View
             Debug.WriteLine("Valuta transakcije: " + valutaTransakcije.valuta);
             Debug.WriteLine("Prodajni kurs valute tranakscije: " + valutaTransakcije.prodajniKurs);
 
+            //Dozvoli upis u polja za otkup i prodaju
             EnableTextBoxes();
+
+            //Postavi kurs u input
+            PostaviKursTransakcijeUInput();
         }
 
         private void Btn_Otkup_Click(object sender, RoutedEventArgs e)
@@ -100,9 +115,12 @@ namespace MenjacnicaProjekat.View
 
             tipTransakcije = "otkup";
 
+            //Dozvoli upis u polja za otkup i prodaju
             EnableTextBoxes();
-        }
 
+            //Postavi kurs u input
+            PostaviKursTransakcijeUInput();
+        }
         private void Btn_Prodaja_Click(object sender, RoutedEventArgs e)
         {
             //Postavi selektovanu boju
@@ -118,7 +136,11 @@ namespace MenjacnicaProjekat.View
 
             tipTransakcije = "prodaja";
 
+            //Dozvoli upis u polja za otkup i prodaju
             EnableTextBoxes();
+
+            //Postavi kurs u input
+            PostaviKursTransakcijeUInput();
         }
 
         private void EnableTextBoxes()
@@ -139,8 +161,43 @@ namespace MenjacnicaProjekat.View
             TextBox tb_IznosValuteProdaje = (TextBox)ivp;
             tb_IznosValuteProdaje.IsEnabled = true;
         }
+        private void PostaviKursTransakcijeUInput()
+        {
+            if (tipTransakcije == "")
+                return;
+            if (valutaTransakcije.valuta == null)
+                return;
+
+            Debug.WriteLine("Maju: " + valutaTransakcije.kupovniKurs.ToString());
+
+            //TextBoxovi
+            FrameworkElement parentContainer = this;
+
+            UIElement ivo = parentContainer.FindName("Input_KursTransakcije") as UIElement;
+            TextBox tb_kurs = (TextBox)ivo;
+            tb_kurs.IsEnabled = true;
+
+            if(tipTransakcije == "otkup")
+                tb_kurs.Text = valutaTransakcije.kupovniKurs.ToString();
+            if(tipTransakcije == "prodaja")
+                tb_kurs.Text = valutaTransakcije.prodajniKurs.ToString();
+        }
 
         //Transakcija
+        private void PostaviKursTransakcije(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+
+            bool unosValidan = ProveriUnosIznosa(sender, textBox.Text);
+
+            if (!unosValidan)
+                return;
+
+            if (tipTransakcije == "otkup")
+                valutaTransakcije.kupovniKurs = float.Parse(textBox.Text);
+            if (tipTransakcije == "prodaja")
+                valutaTransakcije.prodajniKurs = float.Parse(textBox.Text);
+        }
         private void RacunanjeTransakcije(object sender, TextChangedEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
@@ -165,6 +222,7 @@ namespace MenjacnicaProjekat.View
                 default: break;
             }
         }
+
         private bool ProveriUnosIznosa(object sender, string iznos)
         {
             float iznosFloat;
@@ -227,6 +285,60 @@ namespace MenjacnicaProjekat.View
             tb_IznosValuteProdaje.Text = iznosValuteProdaje.ToString();
 
             Debug.WriteLine("Izmene zavrsene, otkup: " + iznosValuteOtkupa.ToString());
+        }
+
+        //Cuvaj/Cisti
+        private async void Button_Snimi(object sender, RoutedEventArgs e)
+        {
+            // Sacuvaj u transakciju
+            Transakcija transakcija = new Transakcija();
+            if (tipTransakcije == "otkup")
+            {
+                transakcija.valutaOtkupa = valutaTransakcije.valuta;
+                transakcija.valutaProdaje = "Dinar";
+                transakcija.kursTransakcije = valutaTransakcije.kupovniKurs;
+            }
+            if (tipTransakcije == "prodaja")
+            {
+                transakcija.valutaOtkupa = "Dinar";
+                transakcija.valutaProdaje = valutaTransakcije.valuta;
+                transakcija.kursTransakcije = valutaTransakcije.prodajniKurs;
+            }
+            transakcija.iznosValuteOtkupa = iznosValuteOtkupa;
+            transakcija.iznosValuteProdaje = iznosValuteProdaje;
+
+            // Convert DateTime to UTC before assigning it to the transakcija object
+            transakcija.vremeTransakcije = DateTime.UtcNow;
+
+            // Prosledi na firebase
+            await transService.AddTransakcija(db, transakcija);
+
+            // Ocisti inpute
+            Button_Ocisti(sender, e);
+        }
+
+        private void Button_Ocisti(object sender, RoutedEventArgs e)
+        {
+            iznosValuteOtkupa = 0;
+            iznosValuteProdaje = 0;
+
+            FrameworkElement parentContainer = this;
+
+            UIElement ivo = parentContainer.FindName("Input_IznosValuteOtkupa") as UIElement;
+            TextBox tb_IznosValuteOtkupa = (TextBox)ivo;
+            tb_IznosValuteOtkupa.Text = iznosValuteOtkupa.ToString();
+
+            UIElement ivp = parentContainer.FindName("Input_IznosValuteProdaje") as UIElement;
+            TextBox tb_IznosValuteProdaje = (TextBox)ivp;
+            tb_IznosValuteProdaje.Text = iznosValuteProdaje.ToString();
+
+            UIElement kurs = parentContainer.FindName("Input_KursTransakcije") as UIElement;
+            TextBox tb_kurs = (TextBox)kurs;
+
+            if (tipTransakcije == "otkup")
+                tb_kurs.Text = valutaTransakcije.kupovniKurs.ToString();
+            if (tipTransakcije == "prodaja")
+                tb_kurs.Text = valutaTransakcije.prodajniKurs.ToString();
         }
 
         //Other functions
