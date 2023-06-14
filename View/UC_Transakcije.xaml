@@ -105,7 +105,8 @@
                                  VerticalAlignment="Top" HorizontalAlignment="Center"
                                  Height="75" Width="450" Margin="0 20"
                                  Padding="20 0" FontSize="30"
-                                 BorderBrush="Teal" BorderThickness="3" Foreground="Teal"/>
+                                 BorderBrush="Teal" BorderThickness="3" Foreground="Teal"
+                                 TextChanged="RacunanjeTransakcije" IsEnabled="False"/>
                         
                         <TextBox Grid.Column="1" x:Name="Input_IznosValuteProdaje"
                                  Style="{StaticResource MaterialDesignOutlinedTextBox}"
@@ -114,7 +115,8 @@
                                  VerticalAlignment="Top" HorizontalAlignment="Center"
                                  Height="75" Width="450" Margin="0 20"
                                  Padding="20 0" FontSize="30"
-                                 BorderBrush="Teal" BorderThickness="3" Foreground="Teal"/>
+                                 BorderBrush="Teal" BorderThickness="3" Foreground="Teal"
+                                 TextChanged="RacunanjeTransakcije" IsEnabled="False"/>
                     </Grid>
                     <Grid Grid.Row="2">
                         <Button Content="OČISTI"

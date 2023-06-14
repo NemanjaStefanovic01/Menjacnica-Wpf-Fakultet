@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MenjacnicaProjekat.SharedData;
 using System.Diagnostics;
+using System.Windows.Media.Converters;
 
 namespace MenjacnicaProjekat.View
 {
@@ -27,7 +28,11 @@ namespace MenjacnicaProjekat.View
         public List<string> oznakePotebnihValuti = new List<string>();
         
         public string tipTransakcije = "";
-        public ValutaKursneListe valutaTransakcije;
+        public ValutaKursneListe valutaTransakcije = new ValutaKursneListe();
+
+        public float iznosValuteOtkupa = 0;
+        public float iznosValuteProdaje = 0;
+
         public UC_Transakcije()
         {
             InitializeComponent();
@@ -75,7 +80,9 @@ namespace MenjacnicaProjekat.View
             Debug.WriteLine("--------------------");
             Debug.WriteLine("Tip tranakscije: " + tipTransakcije);
             Debug.WriteLine("Valuta transakcije: " + valutaTransakcije.valuta);
-            Debug.WriteLine("Kupovni kurs valute tranakscije: " + valutaTransakcije.kupovniKurs);
+            Debug.WriteLine("Prodajni kurs valute tranakscije: " + valutaTransakcije.prodajniKurs);
+
+            EnableTextBoxes();
         }
 
         private void Btn_Otkup_Click(object sender, RoutedEventArgs e)
@@ -92,6 +99,8 @@ namespace MenjacnicaProjekat.View
             prodajaBtn.Foreground = Brushes.WhiteSmoke;
 
             tipTransakcije = "otkup";
+
+            EnableTextBoxes();
         }
 
         private void Btn_Prodaja_Click(object sender, RoutedEventArgs e)
@@ -108,6 +117,116 @@ namespace MenjacnicaProjekat.View
             otkupBtn.Foreground = Brushes.WhiteSmoke;
 
             tipTransakcije = "prodaja";
+
+            EnableTextBoxes();
+        }
+
+        private void EnableTextBoxes()
+        {
+            if (tipTransakcije == "")
+                return;
+            if (valutaTransakcije.valuta == null)
+                return;
+
+            //TextBoxovi
+            FrameworkElement parentContainer = this;
+
+            UIElement ivo = parentContainer.FindName("Input_IznosValuteOtkupa") as UIElement;
+            TextBox tb_IznosValuteOtkupa = (TextBox)ivo;
+            tb_IznosValuteOtkupa.IsEnabled = true;
+
+            UIElement ivp = parentContainer.FindName("Input_IznosValuteProdaje") as UIElement;
+            TextBox tb_IznosValuteProdaje = (TextBox)ivp;
+            tb_IznosValuteProdaje.IsEnabled = true;
+        }
+
+        //Transakcija
+        private void RacunanjeTransakcije(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+
+            bool unosValidan = ProveriUnosIznosa(sender, textBox.Text);
+
+            if (!unosValidan)
+                return;
+
+            switch (textBox.Name)
+            {
+                case "Input_IznosValuteOtkupa":
+                    iznosValuteOtkupa = float.Parse(textBox.Text);
+                    Debug.WriteLine("Iznos valute otkupa: " + iznosValuteOtkupa);
+                    IzracunajVrednosti("otkupa");
+                    break;
+                case "Input_IznosValuteProdaje":
+                    iznosValuteProdaje = float.Parse(textBox.Text);
+                    Debug.WriteLine("Iznos valute prodaje: " + iznosValuteProdaje);
+                    IzracunajVrednosti("prodaje");
+                    break;
+                default: break;
+            }
+        }
+        private bool ProveriUnosIznosa(object sender, string iznos)
+        {
+            float iznosFloat;
+            bool canConvert = float.TryParse(iznos, out iznosFloat);
+
+            if(!canConvert)
+            {
+                TextBox tb = (TextBox)sender;
+                tb.BorderBrush = Brushes.Red;
+            }
+            else
+            {
+                TextBox tb = (TextBox)sender;
+                tb.BorderBrush = Brushes.Teal;
+            }
+
+            return canConvert;
+        }
+        private void IzracunajVrednosti(string pozvanoIz)
+        {
+            Debug.WriteLine("IzracunajVrednosti, prodaja: " + iznosValuteProdaje.ToString());
+            if (tipTransakcije == "otkup")
+            {
+                Debug.WriteLine("1");
+                if (pozvanoIz == "otkupa")
+                {
+                    Debug.WriteLine("1.1");
+                    iznosValuteProdaje = iznosValuteOtkupa * valutaTransakcije.kupovniKurs;
+                }
+                if(pozvanoIz == "prodaje")
+                {
+                    Debug.WriteLine("1.2");
+                    iznosValuteOtkupa = iznosValuteProdaje / valutaTransakcije.kupovniKurs;
+                }
+            }
+            if (tipTransakcije == "prodaja")
+            {
+                Debug.WriteLine("2");
+                if (pozvanoIz == "otkupa")
+                {
+                    Debug.WriteLine("2.1");
+                    iznosValuteProdaje = iznosValuteOtkupa / valutaTransakcije.prodajniKurs;
+                }
+                if (pozvanoIz == "prodaje")
+                {
+                    Debug.WriteLine("2.2");
+                    iznosValuteOtkupa = iznosValuteProdaje * valutaTransakcije.prodajniKurs;
+                }
+            }
+
+            //Postavi vrednosti u textboxove
+            FrameworkElement parentContainer = this;
+
+            UIElement ivo = parentContainer.FindName("Input_IznosValuteOtkupa") as UIElement;
+            TextBox tb_IznosValuteOtkupa = (TextBox)ivo;
+            tb_IznosValuteOtkupa.Text = iznosValuteOtkupa.ToString();
+
+            UIElement ivp = parentContainer.FindName("Input_IznosValuteProdaje") as UIElement;
+            TextBox tb_IznosValuteProdaje = (TextBox)ivp;
+            tb_IznosValuteProdaje.Text = iznosValuteProdaje.ToString();
+
+            Debug.WriteLine("Izmene zavrsene, otkup: " + iznosValuteOtkupa.ToString());
         }
 
         //Other functions
@@ -129,7 +248,7 @@ namespace MenjacnicaProjekat.View
             return odabraneValute;
         }
 
-        //
+        //Misc
         private IEnumerable<T> FindVisualChildren<T>(DependencyObject dependencyObject) where T : DependencyObject
         {
             if (dependencyObject != null)
