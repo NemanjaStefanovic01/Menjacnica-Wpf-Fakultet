@@ -2,7 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +17,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+
+using Path = System.IO.Path;
 
 namespace MenjacnicaProjekat
 {
@@ -131,9 +135,47 @@ namespace MenjacnicaProjekat
             kursnaLista.Show();
         }
 
+        //Help
+        private void OpenHelp(object sender, RoutedEventArgs e)
+        {
+            string helpFilePath = "Res/Help/Help.html";
+            var assembly = Assembly.GetExecutingAssembly();
+            var resourceName = assembly.GetManifestResourceNames()
+                .FirstOrDefault(x => x.EndsWith(helpFilePath.Replace('/', '.')));
+
+            if (resourceName != null)
+            {
+                using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+                {
+                    using (StreamReader reader = new StreamReader(stream))
+                    {
+                        string htmlContent = reader.ReadToEnd();
+                        try
+                        {
+                            // Kreiranje privremene HTML datoteke
+                            string tempHtmlFilePath = Path.Combine(Path.GetTempPath(), "Help.html");
+                            File.WriteAllText(tempHtmlFilePath, htmlContent);
+
+                            // Otvaranje privremene HTML datoteke u podrazumevanom web pregledaču
+                            Process.Start(new ProcessStartInfo(tempHtmlFilePath) { UseShellExecute = true });
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Došlo je do greške prilikom otvaranja HTML sadržaja: " + ex.Message);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Nije moguće pronaći resurs '" + helpFilePath + "'.");
+            }
+        }
+
+
 
         //Misc
-        private void MoveCursorMenu(int index)
+        public void MoveCursorMenu(int index)
         {
             Color goldenYellow = (Color)ColorConverter.ConvertFromString("#FFC000");
             GridCursor.Background = new SolidColorBrush(goldenYellow);
@@ -143,6 +185,15 @@ namespace MenjacnicaProjekat
         private void CursorForProfile()
         {
             GridCursor.Background = Brushes.Transparent;
+        }
+        public void EnableZapocetDan()
+        {
+            Debug.WriteLine("Funckija EnableZapocetDan pozvana");
+
+            Button button1 = (Button)FindName("Btn_Transakcije");
+            button1.IsEnabled = true;
+            Button button2 = (Button)FindName("Btn_ZavrsetakDana");
+            button2.IsEnabled = true;
         }
     }
 }

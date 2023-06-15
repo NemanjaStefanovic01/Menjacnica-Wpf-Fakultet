@@ -265,7 +265,7 @@
                             </StackPanel>
                         </MenuItem.Header>
                     </MenuItem>
-                    <MenuItem Padding="5">
+                    <MenuItem Padding="5" Click="OpenHelp">
                         <MenuItem.Header>
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="Help" VerticalAlignment="Center" 
@@ -330,7 +330,8 @@
             <Button Grid.Row="2" Height="220"
                     Background="Transparent" BorderThickness="0"
                     VerticalAlignment="Center" Padding="0"
-                    Uid="2" Click="TabButton_Click">
+                    Uid="2" Click="TabButton_Click"
+                    IsEnabled="False" x:Name="Btn_Transakcije">
                 <Grid Height="220" Width="195">
                     <materialDesign:PackIcon Kind="CashSync" Foreground="WhiteSmoke"
                                              Height="130" Width="130" Margin="0,5,0,0"
@@ -343,7 +344,8 @@
             <Button Grid.Row="3" Height="220"
                     Background="Transparent" BorderThickness="0"
                     VerticalAlignment="Center" Padding="0"
-                    Uid="3" Click="TabButton_Click">
+                    Uid="3" Click="TabButton_Click"
+                    IsEnabled="False">
                 <Grid Height="220" Width="195">
                     <materialDesign:PackIcon Kind="FileDocumentOutline" Foreground="WhiteSmoke"
                                              Height="130" Width="130" Margin="0,5,0,0"
@@ -359,7 +361,8 @@
             <Button Grid.Row="4" Height="220"
                     Background="Transparent" BorderThickness="0"
                     VerticalAlignment="Center" Padding="0"
-                    Uid="4" Click="TabButton_Click">
+                    Uid="4" Click="TabButton_Click"
+                    IsEnabled="False" x:Name="Btn_ZavrsetakDana">
                 <Grid Height="220" Width="195">
                     <materialDesign:PackIcon Kind="ThemeLightDark" Foreground="WhiteSmoke"
                                              Height="130" Width="130" Margin="0,5,0,0"

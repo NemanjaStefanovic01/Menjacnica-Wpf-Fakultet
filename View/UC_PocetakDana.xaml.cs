@@ -70,6 +70,8 @@ namespace MenjacnicaProjekat.View
             if (parentWindow is MainWindow yourWindow)
             {
                 yourWindow.ZapocniDan();
+                yourWindow.MoveCursorMenu(2);
+                yourWindow.EnableZapocetDan();
             }
         }
     }

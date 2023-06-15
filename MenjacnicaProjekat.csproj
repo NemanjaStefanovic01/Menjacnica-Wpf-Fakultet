@@ -9,12 +9,51 @@
 
   <ItemGroup>
     <None Remove="menjacnica-db-firebase-adminsdk-yffc6-f8e453e734.json" />
+    <None Remove="Res\Help\Help.html" />
+    <None Remove="Res\Help\images\Aspose.Words.588f7d14-41f1-4992-9580-4b49d1ebba0f.001.png" />
+    <None Remove="Res\Help\images\Aspose.Words.588f7d14-41f1-4992-9580-4b49d1ebba0f.002.png" />
+    <None Remove="Res\Help\images\Aspose.Words.588f7d14-41f1-4992-9580-4b49d1ebba0f.003.png" />
+    <None Remove="Res\Help\images\Aspose.Words.588f7d14-41f1-4992-9580-4b49d1ebba0f.004.png" />
+    <None Remove="Res\Help\images\Aspose.Words.588f7d14-41f1-4992-9580-4b49d1ebba0f.005.png" />
+    <None Remove="Res\Help\images\Aspose.Words.588f7d14-41f1-4992-9580-4b49d1ebba0f.006.png" />
+    <None Remove="Res\Help\images\Aspose.Words.588f7d14-41f1-4992-9580-4b49d1ebba0f.007.png" />
+    <None Remove="Res\Help\images\Aspose.Words.588f7d14-41f1-4992-9580-4b49d1ebba0f.008.png" />
+    <None Remove="Res\Help\images\Aspose.Words.588f7d14-41f1-4992-9580-4b49d1ebba0f.009.png" />
+    <None Remove="Res\Help\images\Aspose.Words.588f7d14-41f1-4992-9580-4b49d1ebba0f.010.png" />
+    <None Remove="Res\Help\images\Aspose.Words.588f7d14-41f1-4992-9580-4b49d1ebba0f.011.png" />
+    <None Remove="Res\Help\images\Aspose.Words.588f7d14-41f1-4992-9580-4b49d1ebba0f.012.png" />
+    <None Remove="Res\Help\images\Aspose.Words.588f7d14-41f1-4992-9580-4b49d1ebba0f.013.png" />
+    <None Remove="Res\Help\images\Aspose.Words.588f7d14-41f1-4992-9580-4b49d1ebba0f.014.png" />
+    <None Remove="Res\Help\images\Aspose.Words.588f7d14-41f1-4992-9580-4b49d1ebba0f.015.png" />
+    <None Remove="Res\Help\images\Aspose.Words.588f7d14-41f1-4992-9580-4b49d1ebba0f.016.png" />
+    <None Remove="Res\Help\images\Aspose.Words.588f7d14-41f1-4992-9580-4b49d1ebba0f.017.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="menjacnica-db-firebase-adminsdk-yffc6-f8e453e734.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Res\Help\Help.html" />
+    <EmbeddedResource Include="Res\Help\images\Aspose.Words.588f7d14-41f1-4992-9580-4b49d1ebba0f.001.png" />
+    <EmbeddedResource Include="Res\Help\images\Aspose.Words.588f7d14-41f1-4992-9580-4b49d1ebba0f.002.png" />
+    <EmbeddedResource Include="Res\Help\images\Aspose.Words.588f7d14-41f1-4992-9580-4b49d1ebba0f.003.png" />
+    <EmbeddedResource Include="Res\Help\images\Aspose.Words.588f7d14-41f1-4992-9580-4b49d1ebba0f.004.png" />
+    <EmbeddedResource Include="Res\Help\images\Aspose.Words.588f7d14-41f1-4992-9580-4b49d1ebba0f.005.png" />
+    <EmbeddedResource Include="Res\Help\images\Aspose.Words.588f7d14-41f1-4992-9580-4b49d1ebba0f.006.png" />
+    <EmbeddedResource Include="Res\Help\images\Aspose.Words.588f7d14-41f1-4992-9580-4b49d1ebba0f.007.png" />
+    <EmbeddedResource Include="Res\Help\images\Aspose.Words.588f7d14-41f1-4992-9580-4b49d1ebba0f.008.png" />
+    <EmbeddedResource Include="Res\Help\images\Aspose.Words.588f7d14-41f1-4992-9580-4b49d1ebba0f.009.png" />
+    <EmbeddedResource Include="Res\Help\images\Aspose.Words.588f7d14-41f1-4992-9580-4b49d1ebba0f.010.png" />
+    <EmbeddedResource Include="Res\Help\images\Aspose.Words.588f7d14-41f1-4992-9580-4b49d1ebba0f.011.png" />
+    <EmbeddedResource Include="Res\Help\images\Aspose.Words.588f7d14-41f1-4992-9580-4b49d1ebba0f.012.png" />
+    <EmbeddedResource Include="Res\Help\images\Aspose.Words.588f7d14-41f1-4992-9580-4b49d1ebba0f.013.png" />
+    <EmbeddedResource Include="Res\Help\images\Aspose.Words.588f7d14-41f1-4992-9580-4b49d1ebba0f.014.png" />
+    <EmbeddedResource Include="Res\Help\images\Aspose.Words.588f7d14-41f1-4992-9580-4b49d1ebba0f.015.png" />
+    <EmbeddedResource Include="Res\Help\images\Aspose.Words.588f7d14-41f1-4992-9580-4b49d1ebba0f.016.png" />
+    <EmbeddedResource Include="Res\Help\images\Aspose.Words.588f7d14-41f1-4992-9580-4b49d1ebba0f.017.png" />
   </ItemGroup>
 
   <ItemGroup>
